@@ -1,0 +1,30 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerService", "PowerService\PowerService.csproj", "{3D832554-2F3A-5132-52EC-4088C2F6A5CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerServices.Tests", "PowerServices.Tests\PowerServices.Tests.csproj", "{04F5D1D1-6D18-42BF-888C-A9194BA7C468}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D832554-2F3A-5132-52EC-4088C2F6A5CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D832554-2F3A-5132-52EC-4088C2F6A5CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D832554-2F3A-5132-52EC-4088C2F6A5CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D832554-2F3A-5132-52EC-4088C2F6A5CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04F5D1D1-6D18-42BF-888C-A9194BA7C468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04F5D1D1-6D18-42BF-888C-A9194BA7C468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04F5D1D1-6D18-42BF-888C-A9194BA7C468}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04F5D1D1-6D18-42BF-888C-A9194BA7C468}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {974CD067-58A3-4206-B05E-C4AE43010B99}
+	EndGlobalSection
+EndGlobal
