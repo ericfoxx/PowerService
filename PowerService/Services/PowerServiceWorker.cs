@@ -11,10 +11,10 @@ namespace PowerService.Services
     /// </summary>
     public class PowerServiceWorker : IPowerService
     {
-        private uint[][] Powers { get; set; }
-        private const int MAX_SQUARE_INDEX = 65535;
-        private const int MAX_CUBE_INDEX = 1625;
-        private const int MAX_FOURTH_INDEX = 255;        
+        private List<List<uint>> Powers { get; set; }
+        public const int MAX_SQUARE_INDEX = 65535;
+        public const int MAX_CUBE_INDEX = 1625;
+        public const int MAX_FOURTH_INDEX = 255;        
 
         public PowerServiceWorker() => Powers = [[0, 1], [0, 1], [0, 1]];
 
@@ -29,24 +29,17 @@ namespace PowerService.Services
             throw new NotImplementedException();
         }
 
-        public uint[] GetSquared()
+        public List<uint> GetSquared()
         {
-            throw new NotImplementedException();
+            SetSquaredTo(MAX_SQUARE_INDEX);
+
+            return Powers[0];
         }
 
-        public uint[] GetSquaredRange(int min, int max)
+        public List<uint> GetSquaredRange(int min, int max)
         {
-            //TODO: Implement bounds checking
-            if (Powers[0].Length <= min)
-            {
-                throw new ArgumentException("TODO: implement catch-up logic");
-            }
-            for (int i = min; i < max; i++)
-            {
-                if (i < 2) continue;
-                var h = Powers[0][i - 1]; //       * *
-                Powers[0][i] = (uint)(h + h + i); // 2^2 = h *
-            }
+            SetSquaredTo(max);
+
             var top = max + 1;
 
             return Powers[0][min..top];
@@ -54,17 +47,36 @@ namespace PowerService.Services
 
         public uint GetSquare(int index)
         {
-            //Check against max & length
-            throw new NotImplementedException();
-            //return Powers[0][(int)index];
+            SetSquaredTo(index);
+
+            return Powers[0][index];
         }
 
-        public uint[] GetCubed()
+        public void SetSquaredTo(int max)
+        {
+            var squares = Powers[0];
+
+            if (max < 0) throw new ArgumentException($"Provided index is negative. Provide a positive index.");
+            if (max < 2) return;
+            if (max > MAX_SQUARE_INDEX) throw new ArgumentException($"Provided index {max} is greater than max square index {MAX_SQUARE_INDEX}.");
+
+            if (squares.Count - 1 >= max) return;
+            for (int i = squares.Count; i <= max; i++)
+            {
+                if (i < 2) continue;
+                var h = squares[i - 1]; //                    i  i
+                squares.Add((uint)(h + (i - 1) + i)); // 2^2 = [h] h
+            }
+            Powers[0] = squares;
+            return;
+        }
+
+        public List<uint> GetCubed()
         {
             throw new NotImplementedException();
         }
 
-        public uint[] GetCubedRange(int min, int max)
+        public List<uint> GetCubedRange(int min, int max)
         {
             throw new NotImplementedException();
         }
@@ -74,12 +86,17 @@ namespace PowerService.Services
             throw new NotImplementedException();
         }
 
-        public uint[] GetFourth()
+        public void SetCubedTo(int max)
         {
             throw new NotImplementedException();
         }
 
-        public uint[] GetFourthRange(int min, int max)
+        public List<uint> GetFourth()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<uint> GetFourthRange(int min, int max)
         {
             throw new NotImplementedException();
         }
@@ -89,7 +106,12 @@ namespace PowerService.Services
             throw new NotImplementedException();
         }
 
-        public uint[] GetAllPowers(int index)
+        public void SetFourthTo(int max)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<List<uint>> GetAllPowers(int index)
         {
             throw new NotImplementedException();
         }

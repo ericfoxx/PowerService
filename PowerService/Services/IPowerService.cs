@@ -11,15 +11,18 @@ namespace PowerService.Services
         //ServiceLifetime ILocalServiceLifetime.Lifetime => ServiceLifetime.Singleton;
         public void TestUsage();
         public void Run(bool initSquares, bool initCubes, bool initFourths);
-        public uint[] GetSquared();
-        public uint[] GetSquaredRange(int min, int max);
+        public List<uint> GetSquared();
+        public List<uint> GetSquaredRange(int min, int max);
         public uint GetSquare(int index);
-        public uint[] GetCubed();
-        public uint[] GetCubedRange(int min, int max);
+        public void SetSquaredTo(int max);
+        public List<uint> GetCubed();
+        public List<uint> GetCubedRange(int min, int max);
         public uint GetCube(int index);
-        public uint[] GetFourth();
-        public uint[] GetFourthRange(int min, int max);
+        public void SetCubedTo(int max);
+        public List<uint> GetFourth();
+        public List<uint> GetFourthRange(int min, int max);
         public uint GetFourth(int index);
-        public uint[] GetAllPowers(int index);
+        public void SetFourthTo(int max);
+        public List<List<uint>> GetAllPowers(int index);
     }
 }
