@@ -88,7 +88,25 @@ namespace PowerService.Services
 
         public void SetCubedTo(int max)
         {
-            throw new NotImplementedException();
+            var cubes = Powers[1];
+
+            if (max < 0) throw new ArgumentException($"Provided index is negative. Provide a positive index.");
+            if (max < 2) return;
+            if (max > MAX_CUBE_INDEX) throw new ArgumentException($"Provided index {max} is greater than max cube index {MAX_CUBE_INDEX}.");
+
+            SetSquaredTo(max);
+
+            if (cubes.Count - 1 >= max) return;
+            for (int i = cubes.Count; i <= max; i++)
+            {
+                if (i < 2) continue;
+                var h = cubes[i - 1];
+                var h2 = Powers[0][i - 1];
+                var i2 = cubes[i];
+                cubes.Add((uint)(h + (i - 1) + i));
+            }
+            Powers[1] = cubes;
+            return;
         }
 
         public List<uint> GetFourth()
